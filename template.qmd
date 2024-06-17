@@ -1,0 +1,100 @@
+---
+title: Modern, open and downward-scaleable data engineering
+subtitle: Getting started with the composable data stack
+format: clean-revealjs
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Dr Daniel Kapitan
+    orcid: 0000-0001-8979-9194
+    email: daniel@kapitan.net
+    affiliations: Eindhoven AI Systems Institute
+date: last-modified
+---
+
+## Attribution & copyright notice
+
+This lecture is based on the following open access materials:
+
+- Voltron Data, [The Composable Codex](https://voltrondata.com/codex/a-new-frontier)
+- Cody Peterson, [Modern, hybrid, open analytics](https://anthology-of-data.science/posts/ibis-analytics/)
+- Thierry Jean, [Portable dataflows with Ibis and Hamilton](https://anthology-of-data.science/posts/hamilton-ibis/)
+- Documentation of the following Python libraries: [DuckDB](https://duckdb.org/docs/), [Ibis](https://ibis-project.org), [hamilton](https://github.com/dagworks-inc/hamilton), [polars](https://docs.pola.rs/), [Shiny for Python](https://shiny.posit.co/py/)
+
+
+```{=html}
+<p xmlns:cc="http://creativecommons.org/ns#" >Daniel Kapitan, <em>Modern, open and downward-scaleable data engineering</em>.<br>This work is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
+```
+
+## The split-apply-combine strategy for data analysis
+
+<br>
+
+![](images/split-apply-combine.webp)
+
+::: {style="font-size: 80%;"}
+
+Wickham, H. (2011). The Split-Apply-Combine Strategy for Data Analysis. Journal of Statistical Software, 40(1), 1–29. [https://doi.org/10.18637/jss.v040.i01](https://www.jstatsoft.org/article/view/v040i01)
+
+:::
+
+## The split-apply-combine strategy for data analysis
+
+### Overview data transformations in different libraries
+
+<br>
+
+::: {style="font-size: 80%;"}
+
+| concept | pandas | polars | ibis | PySpark | dplyr | SQL |
+| --- | --- | ---| --- | --- | --- | --- |
+| **split** | groupby() | group_by() | group_by() | groupBy() | group_by() | GROUP BY |
+| **combine** | join (), merge() | join() | left_join, inner_join() etc. |  join() | left_join, inner_join() etc. | LEFT JOIN, JOIN etc. |
+| **filtering (row based)**| loc[], query() | filter() | filter() | filter() | filter() | WHERE | 
+| **select (column based)**| loc[], iloc[],| select() | select() | select() | select() | SELECT | 
+| **mutate** | assign() | with_columns() | mutuate() | withColumn() | mutate() | ADD | 
+| **ordering** | sort_values() | sort() | order_by() | orderBy() | arrange() | ORDER BY |
+
+:::
+
+
+
+## Want more?
+
+### See our longer demo slides
+
+We've deliberarely kept this template lean, to get you up and running as fast as
+possible.
+
+We provide a separate
+[demo template](https://github.com/grantmcdermott/quarto-revealjs-clean-demo),
+with more examples for integrating code, tables, figures, etc.
+
+  - See the live demo slides
+  [here](https://grantmcdermott.com/quarto-revealjs-clean-demo/template.html).
+
+## Summary {#sec-summary}
+
+### A minimalist and elegant presentation theme
+
+- The Quarto reveal.js clean theme aims to be a minimalist and elegant presention
+theme. Here are some options to get you started:
+
+- Add the theme to an existing project.
+
+```{.bash}
+quarto install extension grantmcdermott/quarto-revealjs-clean
+```
+
+... or, create a new project using this slide deck as a lean template.
+
+```{.bash}
+quarto use template grantmcdermott/quarto-revealjs-clean
+```
+
+... or, create a new project using the demo slide deck as a full template.
+
+```{.bash}
+quarto use template grantmcdermott/quarto-revealjs-clean-demo
+```
