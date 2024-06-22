@@ -10,6 +10,7 @@ contributes:
         side: left
       slide-number: true
       date-format: long
+      fig-align: left
       overview: true
       transition: fade
       transition-speed: slow

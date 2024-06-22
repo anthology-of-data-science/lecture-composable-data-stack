@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="template_files/libs/clipboard/clipboard.min.js"></script>
-<script src="template_files/libs/quarto-html/tabby.min.js"></script>
-<script src="template_files/libs/quarto-html/popper.min.js"></script>
-<script src="template_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="template_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="template_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="template_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="template_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.553">
 
   <meta name="author" content="Dr Daniel Kapitan">
-  <meta name="dcterms.date" content="2024-06-17">
+  <meta name="dcterms.date" content="2024-06-19">
   <title>Modern, open and downward-scaleable data engineering</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="template_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="template_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -96,11 +96,11 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="template_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="template_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="template_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="template_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="template_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -409,7 +409,7 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
     </div>
 </div>
 
-  <p class="date">June 17, 2024</p>
+  <p class="date">June 19, 2024</p>
 </section>
 <section id="attribution-copyright-notice" class="slide level2">
 <h2>Attribution &amp; copyright notice</h2>
@@ -422,11 +422,15 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 </ul>
 <p xmlns:cc="http://creativecommons.org/ns#">Daniel Kapitan, <em>Modern, open and downward-scaleable data engineering</em>.<br>This work is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
 </section>
+<section id="our-common-problem" class="slide level2">
+<h2>Our common problem</h2>
+<h3 id="the-mlaidata-mad-landscape">The ML/AI/Data (MAD) Landscape</h3>
+
+<img data-src="images/open-standards-mad-landscape.jpg" class="r-stretch quarto-figure-left"><p class="caption">Source: <a href="https://mad.firstmark.com/">https://mad.firstmark.com/</a></p></section>
 <section id="the-split-apply-combine-strategy-for-data-analysis" class="slide level2">
 <h2>The split-apply-combine strategy for data analysis</h2>
-<p><br></p>
-
-<img data-src="images/split-apply-combine.webp" class="r-stretch"><div style="font-size: 80%;">
+<p><br><img data-src="images/split-apply-combine.webp"></p>
+<div style="font-size: 80%;">
 <p>Wickham, H. (2011). The Split-Apply-Combine Strategy for Data Analysis. Journal of Statistical Software, 40(1), 1–29. <a href="https://www.jstatsoft.org/article/view/v040i01">https://doi.org/10.18637/jss.v040.i01</a></p>
 </div>
 </section>
@@ -515,6 +519,62 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 </table>
 </div>
 </section>
+<section id="working-with-nested-data" class="slide level2">
+<h2>Working with nested data</h2>
+<h3 id="gotcha-unforunately-there-is-no-standard-naming-yet">Gotcha! Unforunately there is no standard naming yet …</h3>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>operation</th>
+<th>ibis</th>
+<th>polars</th>
+<th>duckdb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Flatten <code>Array</code> into multiple rows</td>
+<td><a href="https://ibis-project.org/reference/expression-collections.html#ibis.expr.types.arrays.ArrayValue.unnest"><code>ArrayValue.unnest()</code></a></td>
+<td><a href="https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.explode.html#polars.DataFrame.explode"><code>DataFrame.explode()</code></a></td>
+<td><a href="https://duckdb.org/docs/sql/query_syntax/unnest.html"><code>UNNEST</code></a></td>
+</tr>
+<tr class="even">
+<td>Unnest <code>Struct</code> into multiple columns</td>
+<td><a href="https://ibis-project.org/reference/expression-tables#ibis.expr.types.relations.Table.unpack"><code>Table.unpack(*columns)</code></a></td>
+<td><a href="https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.unnest.html"><code>DataFrame.unnest()</code></a></td>
+<td><a href="https://duckdb.org/docs/sql/query_syntax/unnest.html"><code>UNNEST</code></a></td>
+</tr>
+</tbody>
+</table>
+<div style="font-size: 80%;">
+<p>Ibis also has methods that operate directly on a column of structs:</p>
+<ul>
+<li><a href="https://ibis-project.org/reference/expression-collections#ibis.expr.types.structs.StructValue.destructure"><code>StructValue.destructure()</code></a></li>
+<li><a href="https://ibis-project.org/reference/expression-collections#ibis.expr.types.structs.StructValue.lift"><code>StructValue.lift()</code></a></li>
+</ul>
+</div>
+</section>
+<section id="composable-data-stack" class="slide level2">
+<h2>Composable data stack</h2>
+<h3 id="concept">Concept</h3>
+
+<img data-src="images/composable-data-stack.png" class="r-stretch"></section>
+<section id="composable-data-stack-1" class="slide level2">
+<h2>Composable data stack</h2>
+<h3 id="layers">Layers</h3>
+
+<img data-src="images/composable-data-stack-layers.png" class="r-stretch"></section>
+<section id="composable-data-stack-2" class="slide level2">
+<h2>Composable data stack</h2>
+<h3 id="standards">Standards</h3>
+
+<img data-src="images/composable-data-stack-standards.png" class="r-stretch"></section>
+<section id="composable-data-stack-3" class="slide level2">
+<h2>Composable data stack</h2>
+<h3 id="implementations">Implementations</h3>
+
+<img data-src="images/composable-data-stack-implementation.png" class="r-stretch"></section>
 <section id="want-more" class="slide level2">
 <h2>Want more?</h2>
 <h3 id="see-our-longer-demo-slides">See our longer demo slides</h3>
@@ -546,19 +606,19 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="template_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="template_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="template_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="template_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="template_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="template_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="template_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="template_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="template_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="template_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
