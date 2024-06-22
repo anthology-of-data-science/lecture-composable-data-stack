@@ -29,16 +29,143 @@ This lecture is based on the following open access materials:
 <p xmlns:cc="http://creativecommons.org/ns#" >Daniel Kapitan, <em>Modern, open and downward-scaleable data engineering</em>.<br>This work is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
 ```
 
-## Our common problem
+## Learning objectives
+
+:::: {.columns style="font-size: 80%;"}
+
+::: {.column width="50%"}
+
+### Understand
+
+- how data platforms evolved in the past couple of decades
+- what problems are with current data platforms
+- what concepts underlie the composable data stack
+- what concepts underlie modern data engineering workflows
+
+:::
+
+::: {.column width="50%"}
+
+### Know how to
+
+- ...
+- ...
+- ...
+- ...
+
+:::
+::::
+
+<br>
+
+::: {style="font-size: 80%;"}
+### Reflect
+
+- on how this impact your (future) work as a data engineer
+- on the pro's and con's of open standards and open source
+
+::: 
+
+# Understand
+## The problem
 ### The ML/AI/Data (MAD) Landscape
 
+::: {style="font-size: 60%;"}
 ![Source: [https://mad.firstmark.com/](https://mad.firstmark.com/)](images/open-standards-mad-landscape.jpg)
+:::
 
+## The Composable Data Management System Manifesto
+
+> _The requirement for specialization in data management systems has evolved faster than our software development practices. After decades of organic growth, this situation has created a **siloed landscape** composed of hundreds of products developed and maintained as monoliths, with limited reuse between systems. This fragmentation has resulted in developers often reinventing the wheel, **increased maintenance costs, and slowed down innovation**. It has also affected the end users, who are often required to learn the **idiosyncrasies of dozens of incompatible SQL and non-SQL API dialects**, and settle for systems with incomplete functionality and inconsistent semantics._
+
+::: {style="font-size: 60%;"}
+Pedreira, Pedro, et al. [The composable data management system manifesto.](https://dl.acm.org/doi/10.14778/3603581.3603604) Proceedings of the VLDB Endowment 16.10 (2023): 2679-2685.
+:::
+
+## Let's start at the beginning
+### Edgar Codd invents relational algebra (1970)
+
+![](images/coddpaper.webp)
+
+::: {style="font-size: 60%;"}
+E. F. Codd. [A relational model of data for large shared data banks.](https://doi.org/10.1145/362384.362685) Commun. ACM 13, 6 (June 1970), 377–387. 
+:::
+
+## Standard Query Language (SQL)
+### Still the most important language for a data engineer
+
+![](images/sql-cheat-sheet.webp)
+
+::: {style="font-size: 60%;"}
+Source: Jadwiga Wilkens on Medium. [The Best BigQuery SQL Cheat Sheet for Beginners.](https://medium.com/data-school/the-best-bigquery-sql-cheat-sheet-for-beginners-81c762f72845)
+:::
+
+
+## Evolution of data platfom architectures
+
+![](images/generations-data-plattforms.png)
+
+::: {style="font-size: 60%;"}
+Armbrust, Michael, et al. [Lakehouse: a new generation of open platforms that unify data warehousing and advanced analytics.](https://15721.courses.cs.cmu.edu/spring2023/papers/02-modern/armbrust-cidr21.pdf) Proceedings of CIDR. Vol. 8. 2021.
+:::
+
+## The rise of columnar data stores for analytics
+### 
+
+![](images/row-vs-column-store.webp)
+
+::: {style="font-size: 60%;"}
+Image source: [heavy.ai](https://www.heavy.ai/technical-glossary/columnar-database)
+Melnik, Sergey, et al. [Dremel: interactive analysis of web-scale datasets.](https://research.google/pubs/dremel-interactive-analysis-of-web-scale-datasets-2/) Communications of the ACM 54.6 (2011): 114-123.
+:::
+
+## Big Data Is Dead
+
+![](images/big-data-is-dead.webp)
+
+::: {style="font-size: 60%;"}
+Source: Jordan Tigani, [Big Data Is Dead.](https://motherduck.com/blog/big-data-is-dead/)
+:::
+
+## You can work with 100s GB of data on a single machine
+### All you need is a PC and some open source libraries
+![](images/embedded-db-duckdb.png)
+
+
+## The Composable Data Stack
+### Layers
+![](images/composable-data-stack-layers.png)
+
+## The Composable Data Stack
+### Standards
+![](images/composable-data-stack-standards.png)
+
+## The Composable Data Stack
+### Implementations
+![](images/composable-data-stack-implementation.png)
+
+
+## What stays the same
+### Directed Acyclyc Graphs
+
+## oWhat stays the same
+### Relational algebra and SQL
+
+
+# Know How To
+
+## The Composable Data Stack in Practice
+### Let's get into building an end-to-end stack
+![](images/embedded-db-duckdb.png)
+
+::: {style="font-size: 60%;"}
+Source: The Data Quarry::blog [Embedded databases (1): The harmony of DuckDB, KùzuDB and LanceDB.](https://thedataquarry.com/posts/embedded-db-1/)
+:::
 
 ## The split-apply-combine strategy for data analysis
 <br>![](images/split-apply-combine.webp)
 
-::: {style="font-size: 80%;"}
+::: {style="font-size: 60%;"}
 Wickham, H. (2011). The Split-Apply-Combine Strategy for Data Analysis. Journal of Statistical Software, 40(1), 1–29. [https://doi.org/10.18637/jss.v040.i01](https://www.jstatsoft.org/article/view/v040i01)
 :::
 
@@ -81,21 +208,7 @@ Ibis also has methods that operate directly on a column of structs:
 
 :::
 
-## Composable data stack
-### Concept
-![](images/composable-data-stack.png)
 
-## Composable data stack
-### Layers
-![](images/composable-data-stack-layers.png)
-
-## Composable data stack
-### Standards
-![](images/composable-data-stack-standards.png)
-
-## Composable data stack
-### Implementations
-![](images/composable-data-stack-implementation.png)
 
 
 ## Want more?

@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.553">
 
   <meta name="author" content="Dr Daniel Kapitan">
-  <meta name="dcterms.date" content="2024-06-19">
+  <meta name="dcterms.date" content="2024-06-23">
   <title>Modern, open and downward-scaleable data engineering</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -100,6 +100,8 @@
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -409,7 +411,7 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
     </div>
 </div>
 
-  <p class="date">June 19, 2024</p>
+  <p class="date">June 23, 2024</p>
 </section>
 <section id="attribution-copyright-notice" class="slide level2">
 <h2>Attribution &amp; copyright notice</h2>
@@ -422,15 +424,145 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 </ul>
 <p xmlns:cc="http://creativecommons.org/ns#">Daniel Kapitan, <em>Modern, open and downward-scaleable data engineering</em>.<br>This work is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
 </section>
-<section id="our-common-problem" class="slide level2">
-<h2>Our common problem</h2>
-<h3 id="the-mlaidata-mad-landscape">The ML/AI/Data (MAD) Landscape</h3>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning objectives</h2>
+<div class="columns" style="font-size: 80%;">
+<div class="column" style="width:50%;">
+<h3 id="understand">Understand</h3>
+<ul>
+<li>how data platforms evolved in the past couple of decades</li>
+<li>what problems are with current data platforms</li>
+<li>what concepts underlie the composable data stack</li>
+<li>what concepts underlie modern data engineering workflows</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="know-how-to">Know how to</h3>
+<ul>
+<li>…</li>
+<li>…</li>
+<li>…</li>
+<li>…</li>
+</ul>
+</div>
+</div>
+<p><br></p>
+<section id="reflect" style="font-size: 80%;">
+<h3>Reflect</h3>
+<ul>
+<li>on how this impact your (future) work as a data engineer</li>
+<li>on the pro’s and con’s of open standards and open source</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="understand-1" class="title-slide slide level1 center">
+<h1>Understand</h1>
 
-<img data-src="images/open-standards-mad-landscape.jpg" class="r-stretch quarto-figure-left"><p class="caption">Source: <a href="https://mad.firstmark.com/">https://mad.firstmark.com/</a></p></section>
+</section>
+<section id="the-problem" class="slide level2">
+<h2>The problem</h2>
+<h3 id="the-mlaidata-mad-landscape">The ML/AI/Data (MAD) Landscape</h3>
+<div style="font-size: 60%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="images/open-standards-mad-landscape.jpg"></p>
+<figcaption>Source: <a href="https://mad.firstmark.com/">https://mad.firstmark.com/</a></figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="the-composable-data-management-system-manifesto" class="slide level2">
+<h2>The Composable Data Management System Manifesto</h2>
+<blockquote>
+<p><em>The requirement for specialization in data management systems has evolved faster than our software development practices. After decades of organic growth, this situation has created a <strong>siloed landscape</strong> composed of hundreds of products developed and maintained as monoliths, with limited reuse between systems. This fragmentation has resulted in developers often reinventing the wheel, <strong>increased maintenance costs, and slowed down innovation</strong>. It has also affected the end users, who are often required to learn the <strong>idiosyncrasies of dozens of incompatible SQL and non-SQL API dialects</strong>, and settle for systems with incomplete functionality and inconsistent semantics.</em></p>
+</blockquote>
+<div style="font-size: 60%;">
+<p>Pedreira, Pedro, et al.&nbsp;<a href="https://dl.acm.org/doi/10.14778/3603581.3603604">The composable data management system manifesto.</a> Proceedings of the VLDB Endowment 16.10 (2023): 2679-2685.</p>
+</div>
+</section>
+<section id="lets-start-at-the-beginning" class="slide level2">
+<h2>Let’s start at the beginning</h2>
+<h3 id="edgar-codd-invents-relational-algebra-1970">Edgar Codd invents relational algebra (1970)</h3>
+
+<img data-src="images/coddpaper.webp" class="r-stretch"><div style="font-size: 60%;">
+<p>E. F. Codd. <a href="https://doi.org/10.1145/362384.362685">A relational model of data for large shared data banks.</a> Commun. ACM 13, 6 (June 1970), 377–387.</p>
+</div>
+</section>
+<section id="standard-query-language-sql" class="slide level2">
+<h2>Standard Query Language (SQL)</h2>
+<h3 id="still-the-most-important-language-for-a-data-engineer">Still the most important language for a data engineer</h3>
+
+<img data-src="images/sql-cheat-sheet.webp" class="r-stretch"><div style="font-size: 60%;">
+<p>Source: Jadwiga Wilkens on Medium. <a href="https://medium.com/data-school/the-best-bigquery-sql-cheat-sheet-for-beginners-81c762f72845">The Best BigQuery SQL Cheat Sheet for Beginners.</a></p>
+</div>
+</section>
+<section id="evolution-of-data-platfom-architectures" class="slide level2">
+<h2>Evolution of data platfom architectures</h2>
+
+<img data-src="images/generations-data-plattforms.png" class="r-stretch"><div style="font-size: 60%;">
+<p>Armbrust, Michael, et al.&nbsp;<a href="https://15721.courses.cs.cmu.edu/spring2023/papers/02-modern/armbrust-cidr21.pdf">Lakehouse: a new generation of open platforms that unify data warehousing and advanced analytics.</a> Proceedings of CIDR. Vol. 8. 2021.</p>
+</div>
+</section>
+<section id="the-rise-of-columnar-data-stores-for-analytics" class="slide level2">
+<h2>The rise of columnar data stores for analytics</h2>
+<h3 id="section"></h3>
+
+<img data-src="images/row-vs-column-store.webp" class="r-stretch"><div style="font-size: 60%;">
+<p>Image source: <a href="https://www.heavy.ai/technical-glossary/columnar-database">heavy.ai</a> Melnik, Sergey, et al.&nbsp;<a href="https://research.google/pubs/dremel-interactive-analysis-of-web-scale-datasets-2/">Dremel: interactive analysis of web-scale datasets.</a> Communications of the ACM 54.6 (2011): 114-123.</p>
+</div>
+</section>
+<section id="big-data-is-dead" class="slide level2">
+<h2>Big Data Is Dead</h2>
+
+<img data-src="images/big-data-is-dead.webp" class="r-stretch"><div style="font-size: 60%;">
+<p>Source: Jordan Tigani, <a href="https://motherduck.com/blog/big-data-is-dead/">Big Data Is Dead.</a></p>
+</div>
+</section>
+<section id="you-can-work-with-100s-gb-of-data-on-a-single-machine" class="slide level2">
+<h2>You can work with 100s GB of data on a single machine</h2>
+<h3 id="all-you-need-is-a-pc-and-some-open-source-libraries">All you need is a PC and some open source libraries</h3>
+
+<img data-src="images/embedded-db-duckdb.png" class="r-stretch"></section>
+<section id="the-composable-data-stack" class="slide level2">
+<h2>The Composable Data Stack</h2>
+<h3 id="layers">Layers</h3>
+
+<img data-src="images/composable-data-stack-layers.png" class="r-stretch"></section>
+<section id="the-composable-data-stack-1" class="slide level2">
+<h2>The Composable Data Stack</h2>
+<h3 id="standards">Standards</h3>
+
+<img data-src="images/composable-data-stack-standards.png" class="r-stretch"></section>
+<section id="the-composable-data-stack-2" class="slide level2">
+<h2>The Composable Data Stack</h2>
+<h3 id="implementations">Implementations</h3>
+
+<img data-src="images/composable-data-stack-implementation.png" class="r-stretch"></section>
+<section id="what-stays-the-same" class="slide level2">
+<h2>What stays the same</h2>
+<h3 id="directed-acyclyc-graphs">Directed Acyclyc Graphs</h3>
+</section>
+<section id="owhat-stays-the-same" class="slide level2">
+<h2>oWhat stays the same</h2>
+<h3 id="relational-algebra-and-sql">Relational algebra and SQL</h3>
+</section></section>
+<section>
+<section id="know-how-to-1" class="title-slide slide level1 center">
+<h1>Know How To</h1>
+
+</section>
+<section id="the-composable-data-stack-in-practice" class="slide level2">
+<h2>The Composable Data Stack in Practice</h2>
+<h3 id="lets-get-into-building-an-end-to-end-stack">Let’s get into building an end-to-end stack</h3>
+
+<img data-src="images/embedded-db-duckdb.png" class="r-stretch"><div style="font-size: 60%;">
+<p>Source: The Data Quarry::blog <a href="https://thedataquarry.com/posts/embedded-db-1/">Embedded databases (1): The harmony of DuckDB, KùzuDB and LanceDB.</a></p>
+</div>
+</section>
 <section id="the-split-apply-combine-strategy-for-data-analysis" class="slide level2">
 <h2>The split-apply-combine strategy for data analysis</h2>
 <p><br><img data-src="images/split-apply-combine.webp"></p>
-<div style="font-size: 80%;">
+<div style="font-size: 60%;">
 <p>Wickham, H. (2011). The Split-Apply-Combine Strategy for Data Analysis. Journal of Statistical Software, 40(1), 1–29. <a href="https://www.jstatsoft.org/article/view/v040i01">https://doi.org/10.18637/jss.v040.i01</a></p>
 </div>
 </section>
@@ -555,26 +687,6 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 </ul>
 </div>
 </section>
-<section id="composable-data-stack" class="slide level2">
-<h2>Composable data stack</h2>
-<h3 id="concept">Concept</h3>
-
-<img data-src="images/composable-data-stack.png" class="r-stretch"></section>
-<section id="composable-data-stack-1" class="slide level2">
-<h2>Composable data stack</h2>
-<h3 id="layers">Layers</h3>
-
-<img data-src="images/composable-data-stack-layers.png" class="r-stretch"></section>
-<section id="composable-data-stack-2" class="slide level2">
-<h2>Composable data stack</h2>
-<h3 id="standards">Standards</h3>
-
-<img data-src="images/composable-data-stack-standards.png" class="r-stretch"></section>
-<section id="composable-data-stack-3" class="slide level2">
-<h2>Composable data stack</h2>
-<h3 id="implementations">Implementations</h3>
-
-<img data-src="images/composable-data-stack-implementation.png" class="r-stretch"></section>
 <section id="want-more" class="slide level2">
 <h2>Want more?</h2>
 <h3 id="see-our-longer-demo-slides">See our longer demo slides</h3>
@@ -601,7 +713,7 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 <p><a href="https://anthology-of-data.science" class="uri">https://anthology-of-data.science</a></p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -612,6 +724,7 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
   <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -632,7 +745,8 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -653,7 +767,7 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: 'c/t',
+        slideNumber: 'h.v',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -694,7 +808,7 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
         rtl: false,
 
         // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
+        navigationMode: 'grid',
 
         // Randomizes the order of slides each time the presentation loads
         shuffle: false,
@@ -803,7 +917,7 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,
