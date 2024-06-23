@@ -123,34 +123,40 @@ Source: Basil Borque on [Stackoverflow](https://stackoverflow.com/questions/7022
 
 
 ## From row-based to column-based tables
-### Columnar is fast, especially if we all share the same format
+### Columnar is faster for analytical processing
 
-
-:::: {.columns}
-
-::: {.column width="50%" style="font-size: 60%;"}
 ![](images/row-vs-columnar-data.png)
 
-Image source: [Apache Arrow overview](https://arrow.apache.org/overview/)
+::: {style="font-size: 60%;"}
+Source: [Apache Arrow overview](https://arrow.apache.org/overview/).
 :::
-
-::: {.column width="50%"}
-![](images/arrow-copy.png)
-![](images/arrow-shared.png)
-:::
-
-::::
-
 
 
 ## {background-color="black"}
-
 ![](images/importance-of-interoperability.png)
 
+## Standardization saves time and resources
+### No costly serialization/deserialization, no custom implementations
+
+<br>
+
+:::: {.columns}
+::: {.column width="50%"}
+![](images/arrow-copy.png)
+:::
+
+::: {.column width="50%"}
+![](images/arrow-shared.png)
+:::
+::::
+
+::: {style="font-size: 60%;"}
+Source: [Apache Arrow overview](https://arrow.apache.org/overview/).
+:::
+
+
 ## Decomposing the database into open standards
-
 ![](images/parquet-arrow-iceberg.png)
-
 
 ## The Composable Data Stack
 ### Layers
