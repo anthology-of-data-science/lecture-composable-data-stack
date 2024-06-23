@@ -31,6 +31,8 @@ This lecture is based on the following open access materials:
 
 ## Learning objectives
 
+<br>
+
 :::: {.columns style="font-size: 80%;"}
 
 ::: {.column width="50%"}
@@ -48,15 +50,13 @@ This lecture is based on the following open access materials:
 
 ### Know how to
 
-- ...
-- ...
+- Build end-to-end data pipeline using open standards and open source
+- Use the split-apply-combine strategy with various syntaxes
 - ...
 - ...
 
 :::
 ::::
-
-<br>
 
 ::: {style="font-size: 80%;"}
 ### Reflect
@@ -109,27 +109,43 @@ Source: Jadwiga Wilkens on Medium. [The Best BigQuery SQL Cheat Sheet for Beginn
 Armbrust, Michael, et al. [Lakehouse: a new generation of open platforms that unify data warehousing and advanced analytics.](https://15721.courses.cs.cmu.edu/spring2023/papers/02-modern/armbrust-cidr21.pdf) Proceedings of CIDR. Vol. 8. 2021.
 :::
 
-## The rise of columnar data stores for analytics
-### 
+## Decomposing the venerable relational database management system (RDBMS)
 
-![](images/row-vs-column-store.webp)
-
-::: {style="font-size: 60%;"}
-Image source: [heavy.ai](https://www.heavy.ai/technical-glossary/columnar-database)
-Melnik, Sergey, et al. [Dremel: interactive analysis of web-scale datasets.](https://research.google/pubs/dremel-interactive-analysis-of-web-scale-datasets-2/) Communications of the ACM 54.6 (2011): 114-123.
-:::
-
-## Big Data Is Dead
-
-![](images/big-data-is-dead.webp)
+![](images/db-catalog-schema.png)
 
 ::: {style="font-size: 60%;"}
-Source: Jordan Tigani, [Big Data Is Dead.](https://motherduck.com/blog/big-data-is-dead/)
+Source: Basil Borque on [Stackoverflow](https://stackoverflow.com/questions/7022755/whats-the-difference-between-a-catalog-and-a-schema-in-a-relational-database)
 :::
 
-## You can work with 100s GB of data on a single machine
-### All you need is a PC and some open source libraries
-![](images/embedded-db-duckdb.png)
+
+## From row-based to column-based tables
+### Columnar is fast, especially if we all share the same format
+
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 60%;"}
+![](images/row-vs-columnar-data.png)
+
+Image source: [Apache Arrow overview](https://arrow.apache.org/overview/)
+:::
+
+::: {.column width="50%"}
+![](images/arrow-copy.png)
+![](images/arrow-shared.png)
+:::
+
+::::
+
+
+
+## {background-color="black"}
+
+![](images/importance-of-interoperability.png)
+
+## Decomposing the database into open standards
+
+![](images/parquet-arrow-iceberg.png)
 
 
 ## The Composable Data Stack
@@ -144,23 +160,57 @@ Source: Jordan Tigani, [Big Data Is Dead.](https://motherduck.com/blog/big-data-
 ### Implementations
 ![](images/composable-data-stack-implementation.png)
 
+## Big Data Is Dead
 
-## What stays the same
-### Directed Acyclyc Graphs
+![](images/big-data-is-dead.webp)
 
-## oWhat stays the same
-### Relational algebra and SQL
+::: {style="font-size: 60%;"}
+Source: Jordan Tigani, [Big Data Is Dead.](https://motherduck.com/blog/big-data-is-dead/)
+:::
 
-
-# Know How To
-
-## The Composable Data Stack in Practice
-### Let's get into building an end-to-end stack
+## You can work with 100s GB of data on a single machine
+### All you need is a PC and some open source libraries
 ![](images/embedded-db-duckdb.png)
 
 ::: {style="font-size: 60%;"}
 Source: The Data Quarry::blog [Embedded databases (1): The harmony of DuckDB, KùzuDB and LanceDB.](https://thedataquarry.com/posts/embedded-db-1/)
 :::
+
+
+# Know How To
+
+## From components to a whole platform architecture
+
+![](images/Unified-Data-Infrastructure-2.0.png)
+
+::: {style="font-size: 60%;"}
+Source: Andreessen Horowitz, [Emerging Architecture for Modern Data Infrastructure](https://a16z.com/emerging-architectures-for-modern-data-infrastructure/).
+:::
+
+## The Composable Data Stack in Practice
+### Let's get into building an end-to-end stack
+![](images/ibis-analytics-overview.png)
+
+## The Pipeline Pattern
+### Directed Acyclyc Graphs, ETL/ELT and functional data engineering
+
+<br>
+
+![](images/hamilton-architecture-overview.webp)
+
+::: {style="font-size: 60%;"}
+Source: [Hamilton](https://hamilton.dagworks.io/en/latest/).
+:::
+
+## Dagster
+### Software-Defined Assets
+
+![](images/software-defined-asset.png)
+
+::: {style="font-size: 60%;"}
+Source: Dagster [Introducing Software-Defined Assets.](https://dagster.io/blog/software-defined-assets)
+:::
+
 
 ## The split-apply-combine strategy for data analysis
 <br>![](images/split-apply-combine.webp)
@@ -209,43 +259,18 @@ Ibis also has methods that operate directly on a column of structs:
 :::
 
 
+## You can swap components to your hearts content
+### My personal preferences
+
+<br>
+
+| component | Ibis analytics demo | My preference |
+|-----|-----|-----|
+| Workflow orchestration | [Dagster](https://docs.dagster.io/getting-started) | [Hamilton](https://hamilton.dagworks.io/en/latest/) |
+| Persistent storage | parquet, native DuckDB files | [Apache Iceberg](https://py.iceberg.apache.org/) |
+| Dashboarding app | [Streamlit](https://docs.streamlit.io/) | [Shiny for Python](https://shiny.posit.co/py/docs/overview.html), [Quarto](https://quarto.org) |
+| Visualization | [plotly](https://plotly.com/python/) | [vega-altair](https://altair-viz.github.io/) |
+
+# Reflect
 
 
-## Want more?
-
-### See our longer demo slides
-
-We've deliberarely kept this template lean, to get you up and running as fast as
-possible.
-
-We provide a separate
-[demo template](https://github.com/grantmcdermott/quarto-revealjs-clean-demo),
-with more examples for integrating code, tables, figures, etc.
-
-  - See the live demo slides
-  [here](https://grantmcdermott.com/quarto-revealjs-clean-demo/template.html).
-
-## Summary {#sec-summary}
-
-### A minimalist and elegant presentation theme
-
-- The Quarto reveal.js clean theme aims to be a minimalist and elegant presention
-theme. Here are some options to get you started:
-
-- Add the theme to an existing project.
-
-```{.bash}
-quarto install extension grantmcdermott/quarto-revealjs-clean
-```
-
-... or, create a new project using this slide deck as a lean template.
-
-```{.bash}
-quarto use template grantmcdermott/quarto-revealjs-clean
-```
-
-... or, create a new project using the demo slide deck as a full template.
-
-```{.bash}
-quarto use template grantmcdermott/quarto-revealjs-clean-demo
-```
