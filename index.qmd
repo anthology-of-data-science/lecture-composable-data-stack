@@ -248,8 +248,36 @@ Wickham, H. (2011). The Split-Apply-Combine Strategy for Data Analysis. Journal 
 
 :::
 
-## Working with nested data
 
+## Naming of table hierarchy differs across backends
+### Ibis uses catalog --> database --> table
+
+---
+title: Backend Table Hierarchy
+---
+
+| Backend    | Catalog        | Database   |
+|------------|----------------|------------|
+| bigquery   | project        | database   |
+| clickhouse |                | database   |
+| datafusion | catalog        | schema     |
+| druid      | dataSourceType | dataSource |
+| duckdb     | database       | schema     |
+| flink      | catalog        | database   |
+| impala     |                | database   |
+| mssql      | database       | schema     |
+| mysql      |                | database   |
+| postgres   | database       | schema     |
+| pyspark    |                | database   |
+| snowflake  |                | database   |
+| trino      | catalog        | schema     |
+
+::: {style="font-size: 60%;"}
+Source: [Ibis documentation.](https://ibis-project.org/backend_table_hiearchy.html)
+:::
+
+
+## Working with nested data
 ### Gotcha! Unforunately there is no standard naming yet ...
 
 <br>
