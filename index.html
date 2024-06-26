@@ -8,10 +8,10 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.553">
 
   <meta name="author" content="Dr Daniel Kapitan">
-  <meta name="dcterms.date" content="2024-06-23">
+  <meta name="dcterms.date" content="2024-06-26">
   <title>Modern, open and downward-scaleable data engineering</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -346,7 +411,7 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
     </div>
 </div>
 
-  <p class="date">June 23, 2024</p>
+  <p class="date">June 26, 2024</p>
 </section>
 <section id="attribution-copyright-notice" class="slide level2">
 <h2>Attribution &amp; copyright notice</h2>
@@ -370,17 +435,16 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 <h3 id="understand">Understand</h3>
 <ul>
 <li>how data platforms evolved in the past couple of decades</li>
-<li>what problems are with current data platforms</li>
+<li>current problems with data platforms</li>
 <li>what concepts underlie the composable data stack</li>
 <li>what concepts underlie modern data engineering workflows</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <h3 id="know-how-to">Know how to</h3>
 <ul>
-<li>Build end-to-end data pipeline using open standards and open source</li>
-<li>Use the split-apply-combine strategy with various syntaxes</li>
-<li>…</li>
-<li>…</li>
+<li>Build end-to-end data pipeline using open source implementations of the composable data stack</li>
+<li>Apply best practices of functional data engineering</li>
+<li>Apply the split-apply-combine strategy with various syntaxes</li>
 </ul>
 </div>
 </div>
@@ -543,6 +607,19 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 <p>Source: Dagster <a href="https://dagster.io/blog/software-defined-assets">Introducing Software-Defined Assets.</a></p>
 </div>
 </section>
+<section id="walk-through-end-to-end-pipeline" class="slide level2">
+<h2>Walk-through end-to-end pipeline</h2>
+<h3 id="points-of-interest">Points of interest</h3>
+<p><br></p>
+<ul>
+<li>Overall structure of the project</li>
+<li>Managing your workflow: <a href="https://just.systems/"><code>just</code></a></li>
+<li>Writing pipelines: functions, functions, functions</li>
+<li>Inspecting your DAG with Dagster</li>
+<li>Materializing assets</li>
+<li>Dashboard</li>
+</ul>
+</section>
 <section id="the-split-apply-combine-strategy-for-data-analysis" class="slide level2">
 <h2>The split-apply-combine strategy for data analysis</h2>
 <p><br><img data-src="images/split-apply-combine.webp"></p>
@@ -635,6 +712,113 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 </table>
 </div>
 </section>
+<section id="method-chaining" class="slide level2">
+<h2>Method chaining</h2>
+<h3 id="using-functions-the-bad-way">Using functions the bad way</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a>tumble_after(</span>
+<span id="cb1-2"><a href=""></a>    broke(</span>
+<span id="cb1-3"><a href=""></a>        fell_down(</span>
+<span id="cb1-4"><a href=""></a>            fetch(went_up(jack_jill, <span class="st">"hill"</span>), <span class="st">"water"</span>),</span>
+<span id="cb1-5"><a href=""></a>            jack),</span>
+<span id="cb1-6"><a href=""></a>        <span class="st">"crown"</span>),</span>
+<span id="cb1-7"><a href=""></a>    <span class="st">"jill"</span></span>
+<span id="cb1-8"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 id="vs.-the-more-readable-way">… vs.&nbsp;the more readable way</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a>(jack_jill</span>
+<span id="cb2-2"><a href=""></a>  .went_up(<span class="st">"hill"</span>)</span>
+<span id="cb2-3"><a href=""></a>  .fetch(<span class="st">"water"</span>)</span>
+<span id="cb2-4"><a href=""></a>  .fell_down(<span class="st">"jack"</span>)</span>
+<span id="cb2-5"><a href=""></a>  .broke(<span class="st">"crown"</span>)</span>
+<span id="cb2-6"><a href=""></a>  .tumble_after(<span class="st">"jill"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="font-size: 60%;">
+<p>Source: Tom’s (Augspurger) Blog. <a href="https://tomaugspurger.net/posts/method-chaining/">Method Chaining</a>.</p>
+</div>
+</section>
+<section id="naming-of-table-hierarchy-differs-across-backends" class="slide level2">
+<h2>Naming of table hierarchy differs across backends</h2>
+<h3 id="ibis-uses-catalog-database-table">Ibis uses catalog –&gt; database –&gt; table</h3>
+<div style="font-size: 80%;">
+<table>
+<thead>
+<tr class="header">
+<th>Backend</th>
+<th>Catalog</th>
+<th>Database</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>bigquery</td>
+<td>project</td>
+<td>database</td>
+</tr>
+<tr class="even">
+<td>clickhouse</td>
+<td></td>
+<td>database</td>
+</tr>
+<tr class="odd">
+<td>datafusion</td>
+<td>catalog</td>
+<td>schema</td>
+</tr>
+<tr class="even">
+<td>druid</td>
+<td>dataSourceType</td>
+<td>dataSource</td>
+</tr>
+<tr class="odd">
+<td>duckdb</td>
+<td>database</td>
+<td>schema</td>
+</tr>
+<tr class="even">
+<td>flink</td>
+<td>catalog</td>
+<td>database</td>
+</tr>
+<tr class="odd">
+<td>impala</td>
+<td></td>
+<td>database</td>
+</tr>
+<tr class="even">
+<td>mssql</td>
+<td>database</td>
+<td>schema</td>
+</tr>
+<tr class="odd">
+<td>mysql</td>
+<td></td>
+<td>database</td>
+</tr>
+<tr class="even">
+<td>postgres</td>
+<td>database</td>
+<td>schema</td>
+</tr>
+<tr class="odd">
+<td>pyspark</td>
+<td></td>
+<td>database</td>
+</tr>
+<tr class="even">
+<td>snowflake</td>
+<td></td>
+<td>database</td>
+</tr>
+<tr class="odd">
+<td>trino</td>
+<td>catalog</td>
+<td>schema</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="font-size: 60%;">
+<p>Source: <a href="https://ibis-project.org/backend_table_hiearchy.html">Ibis documentation.</a></p>
+</div>
+</section>
 <section id="working-with-nested-data" class="slide level2">
 <h2>Working with nested data</h2>
 <h3 id="gotcha-unforunately-there-is-no-standard-naming-yet">Gotcha! Unforunately there is no standard naming yet …</h3>
@@ -706,15 +890,35 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 </tr>
 </tbody>
 </table>
+</section>
+<section id="stuff-we-havent-covered-yet" class="slide level2">
+<h2>Stuff we haven’t covered yet</h2>
+<h3 id="and-will-definitely-give-you-a-headache-in-future-projects">…and will definitely give you a headache in future projects</h3>
+<p><br></p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Change_data_capture">Change Data Capture (CDC)</a>: determine and track data that has changed at the source, such that you only have to process the ‘deltas’</li>
+<li>Setup and manage access control mechanisms in an operational data platform</li>
+<li>Provide documentation for non-technical users</li>
+<li>Reporting on data quality</li>
+</ul>
 </section></section>
+<section>
 <section id="reflect-1" class="title-slide slide level1 center">
 <h1>Reflect</h1>
+
+</section>
+<section id="group-discussion" class="slide level2">
+<h2>Group discussion</h2>
+<h3 id="what-are-your-main-take-outs">What are your main take-outs?</h3>
+</section>
+<section id="thanks-for-your-attention." class="slide level2" data-background-image="images/speakerscorner.jpg" data-background-size="contain" data-background-repeat="no-repeat">
+<h2>Thanks for your attention.</h2>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p><a href="https://anthology-of-data.science" class="uri">https://anthology-of-data.science</a></p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -1003,6 +1207,24 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
         // clear code selection
         e.clearSelection();
       });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1039,7 +1261,11 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

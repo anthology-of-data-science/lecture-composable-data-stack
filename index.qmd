@@ -44,7 +44,7 @@ Source code: [https://github.com/anthology-of-data-science/presentation-composab
 ### Understand
 
 - how data platforms evolved in the past couple of decades
-- what problems are with current data platforms
+- current problems with data platforms
 - what concepts underlie the composable data stack
 - what concepts underlie modern data engineering workflows
 
@@ -54,10 +54,9 @@ Source code: [https://github.com/anthology-of-data-science/presentation-composab
 
 ### Know how to
 
-- Build end-to-end data pipeline using open standards and open source
-- Use the split-apply-combine strategy with various syntaxes
-- ...
-- ...
+- Build end-to-end data pipeline using open source implementations of the composable data stack
+- Apply best practices of functional data engineering
+- Apply the split-apply-combine strategy with various syntaxes
 
 :::
 ::::
@@ -221,6 +220,16 @@ Source: [Hamilton](https://hamilton.dagworks.io/en/latest/).
 Source: Dagster [Introducing Software-Defined Assets.](https://dagster.io/blog/software-defined-assets)
 :::
 
+## Walk-through end-to-end pipeline
+### Points of interest
+<br>
+
+- Overall structure of the project
+- Managing your workflow: [`just`](https://just.systems/)
+- Writing pipelines: functions, functions, functions
+- Inspecting your DAG with Dagster
+- Materializing assets
+- Dashboard
 
 ## The split-apply-combine strategy for data analysis
 <br>![](images/split-apply-combine.webp)
@@ -247,14 +256,40 @@ Wickham, H. (2011). The Split-Apply-Combine Strategy for Data Analysis. Journal 
 | **ordering** | sort_values() | sort() | order_by() | orderBy() | arrange() | ORDER BY |
 
 :::
+## Method chaining
+### Using functions the bad way
+
+```python
+tumble_after(
+    broke(
+        fell_down(
+            fetch(went_up(jack_jill, "hill"), "water"),
+            jack),
+        "crown"),
+    "jill"
+)
+```
+
+### ... vs. the more readable way
+
+```python
+(jack_jill
+  .went_up("hill")
+  .fetch("water")
+  .fell_down("jack")
+  .broke("crown")
+  .tumble_after("jill")
+```
+
+::: {style="font-size: 60%;"}
+Source: Tom's (Augspurger) Blog. [Method Chaining](https://tomaugspurger.net/posts/method-chaining/).
+:::
 
 
 ## Naming of table hierarchy differs across backends
 ### Ibis uses catalog --> database --> table
 
----
-title: Backend Table Hierarchy
----
+::: {style="font-size: 80%;"}
 
 | Backend    | Catalog        | Database   |
 |------------|----------------|------------|
@@ -271,6 +306,7 @@ title: Backend Table Hierarchy
 | pyspark    |                | database   |
 | snowflake  |                | database   |
 | trino      | catalog        | schema     |
+:::
 
 ::: {style="font-size: 60%;"}
 Source: [Ibis documentation.](https://ibis-project.org/backend_table_hiearchy.html)
@@ -309,6 +345,19 @@ Ibis also has methods that operate directly on a column of structs:
 | Dashboarding app | [Streamlit](https://docs.streamlit.io/) | [Shiny for Python](https://shiny.posit.co/py/docs/overview.html), [Quarto](https://quarto.org) |
 | Visualization | [plotly](https://plotly.com/python/) | [vega-altair](https://altair-viz.github.io/) |
 
+## Stuff we haven't covered yet
+### ...and will definitely give you a headache in future projects
+
+<br>
+
+- [Change Data Capture (CDC)](https://en.wikipedia.org/wiki/Change_data_capture): determine and track data that has changed at the source, such that you only have to process the 'deltas'
+- Setup and manage access control mechanisms in an operational data platform
+- Provide documentation for non-technical users
+- Reporting on data quality
+
 # Reflect
 
+## Group discussion
+### What are your main take-outs?
 
+## Thanks for your attention. {background-image="images/speakerscorner.jpg" background-size="contain" background-repeat="no-repeat"}
