@@ -193,7 +193,7 @@ Source: The Data Quarry::blog [Embedded databases (1): The harmony of DuckDB, KÃ
 ![](images/Unified-Data-Infrastructure-2.0.png)
 
 ::: {style="font-size: 60%;"}
-Source: Andreessen Horowitz, [Emerging Architecture for Modern Data Infrastructure](https://a16z.com/emerging-architectures-for-modern-data-infrastructure/).
+Source: Andreessen Horowitz, [Emerging Architectures for Modern Data Infrastructure](https://a16z.com/emerging-architectures-for-modern-data-infrastructure/).
 :::
 
 ## The Composable Data Stack in Practice
