@@ -179,6 +179,24 @@ Source: [Apache Arrow overview](https://arrow.apache.org/overview/).
 :::
 
 
+## JDBC/ODBC: row-based database connectivity protocols
+### Less suitable for analytical workloads
+
+![](images/adbc-flow-1.png)
+
+::: {style="font-size: 60%;"}
+Source: [Apache Arrow: Introducing ADBC](https://arrow.apache.org/blog/2023/01/05/introducing-arrow-adbc/).
+:::
+
+## Arrow Database Connectivity (ADBC)
+### A single API for getting Arrow data in and out of different databases
+
+![](images/adbc-flow-2.png)
+
+::: {style="font-size: 60%;"}
+Source: [Apache Arrow: Introducing ADBC](https://arrow.apache.org/blog/2023/01/05/introducing-arrow-adbc/).
+:::
+
 ## Iceberg: an open table format and catalog
 ### Basically, a database engine in files
 
@@ -348,6 +366,10 @@ Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dre
 
 # Understand the composable data stack
 
+## The Data Science Hierachy of Needs
+### All you need is MICE
+![](/images/mice-complete-implementation.png)
+
 ## The Composable Data Stack
 ### Layers
 ![](images/composable-data-stack-layers.png)
@@ -357,8 +379,13 @@ Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dre
 ![](images/composable-data-stack-standards.png)
 
 ## The Composable Data Stack
-### Implementations
+### Subtstrait for Intermediate Representation (IR)
 ![](images/composable-data-stack-implementation.png)
+
+## The Composable Data Stack
+### Arrow for connectivity and data memory layout
+![](images/composable-data-stack-diverse-system-ibis-codes-written.png)
+
 
 ## Big Data Is Dead
 
