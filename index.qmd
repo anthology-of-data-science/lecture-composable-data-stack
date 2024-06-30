@@ -368,7 +368,7 @@ Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dre
 
 ## The Data Science Hierachy of Needs
 ### All you need is MICE
-![](/images/mice-complete-implementation.png)
+![](images/mice-complete-implementation.png)
 
 ## The Composable Data Stack
 ### Layers
