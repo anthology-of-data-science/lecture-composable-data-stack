@@ -41,7 +41,7 @@ Source code: [https://github.com/anthology-of-data-science/lecture-composable-da
 
 ::: {.column width="50%"}
 
-### Understand
+### Understand the problem
 
 - how data platforms evolved in the past couple of decades
 - current problems with data platforms
@@ -69,7 +69,7 @@ Source code: [https://github.com/anthology-of-data-science/lecture-composable-da
 
 ::: 
 
-# Understand
+# Understand the problem
 ## The problem
 ### The ML/AI/Data (MAD) Landscape
 
@@ -112,6 +112,29 @@ Source: Jadwiga Wilkens on Medium. [The Best BigQuery SQL Cheat Sheet for Beginn
 Armbrust, Michael, et al. [Lakehouse: a new generation of open platforms that unify data warehousing and advanced analytics.](https://15721.courses.cs.cmu.edu/spring2023/papers/02-modern/armbrust-cidr21.pdf) Proceedings of CIDR. Vol. 8. 2021.
 :::
 
+## Towards a data-centric future
+
+<br>
+
+::: {style="font-size: 80%;"}
+| NOW: Application-Centric | FUTURE: Data-Centric |
+|---|---|
+|Exorbitant, often  prohibitive, cost of change.	Reasonable cost of change. |Data is tied up in applications because applications own data.	Data is an open resource that outlives any given application.|
+|Every new project comes with a big data conversion project.|Every new project taps into existing data stores. |
+|Data exists in wide variety of heterogeneous formats, structures, meaning, and terminology.|Data is globally integrated sharing a common meaning, being exported from a common source into any needed format.|
+|Data integration consumes 35%-65% of IT budget.|Data integration will be nearly free. |
+|Hard or impossible to integrate external data with internal data.|Internal and external data readily integrated.|
+:::
+
+::: {style="font-size: 60%;"}
+Source: [The Data-Centric Manifesto: Principles](http://datacentricmanifesto.org/principles/).
+:::
+
+## {background-color="black"}
+![](images/importance-of-interoperability.png)
+
+# Understand open standards
+
 ## Decomposing the venerable relational database management system (RDBMS)
 
 ![](images/db-catalog-schema.png)
@@ -120,8 +143,10 @@ Armbrust, Michael, et al. [Lakehouse: a new generation of open platforms that un
 Source: Basil Borque on [Stackoverflow](https://stackoverflow.com/questions/7022755/whats-the-difference-between-a-catalog-and-a-schema-in-a-relational-database)
 :::
 
+## Decomposing the database into open standards
+![](images/parquet-arrow-iceberg.png)
 
-## From row-based to column-based tables
+## Arrow: from row-based to column-based tables
 ### Columnar is faster for analytical processing
 
 ![](images/row-vs-columnar-data.png)
@@ -129,10 +154,6 @@ Source: Basil Borque on [Stackoverflow](https://stackoverflow.com/questions/7022
 ::: {style="font-size: 60%;"}
 Source: [Apache Arrow overview](https://arrow.apache.org/overview/).
 :::
-
-
-## {background-color="black"}
-![](images/importance-of-interoperability.png)
 
 ## Standardization saves time and resources
 ### No costly serialization/deserialization, no custom implementations
@@ -154,8 +175,174 @@ Source: [Apache Arrow overview](https://arrow.apache.org/overview/).
 :::
 
 
-## Decomposing the database into open standards
-![](images/parquet-arrow-iceberg.png)
+## Iceberg: an open table format and catalog
+### Basically, a database engine in files
+
+<br>
+
+![](images/iceberg-metadata.png)
+
+::: {style="font-size: 60%;"}
+Source: [Apache Iceberg specification](https://iceberg.apache.org/spec/).
+:::
+
+## Iceberg catalog
+### We still need a (small) database
+
+![](images/iceberg-catalog.webp)
+
+::: {style="font-size: 60%;"}
+Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared).
+:::
+
+## Iceberg metadata file
+### Stores schema, partition information and snapshots
+
+![](images/iceberg-metadata-file.webp)
+
+::: {style="font-size: 60%;"}
+Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared).
+:::
+
+## Iceberg manifest list
+### Stores information about each manifest file that makes up a snapshot
+
+![](images/iceberg-manifest-list.webp)
+
+::: {style="font-size: 60%;"}
+Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared).
+:::
+
+
+## Iceberg manifest file
+### Track data files as well as additional details and statistics about each file
+
+![](images/iceberg-manifest-file.webp)
+
+::: {style="font-size: 60%;"}
+Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared).
+:::
+
+## Iceberg in practice
+### Creating a table
+
+<br>
+
+```sql
+CREATE TABLE table1 (
+    order_id BIGINT,
+    customer_id BIGINT,
+    order_amount DECIMAL(10, 2),
+    order_ts TIMESTAMP
+)
+USING iceberg
+PARTITIONED BY ( HOUR(order_ts) );
+```
+
+::: {style="font-size: 60%;"}
+Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared).
+:::
+
+
+## Iceberg in practice
+### Result of creating a table
+
+<br>
+
+![](images/iceberg-create-table.png)
+
+::: {style="font-size: 60%;"}
+Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared).
+:::
+
+## Iceberg in practice
+### Inserting data
+
+<br>
+
+```sql
+INSERT INTO table1 VALUES (
+    123,
+    456,
+    36.17,
+    '2021-01-26 08:10:23'
+);
+```
+
+::: {style="font-size: 60%;"}
+Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared).
+:::
+
+
+## Iceberg in practice
+### Result of inserting data
+
+<br>
+
+![](images/iceberg-insert.webp)
+
+::: {style="font-size: 60%;"}
+Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared).
+:::
+
+## Iceberg in practice
+### Merge into/upserting data
+
+<br>
+
+```sql
+MERGE INTO table1
+USING ( SELECT * FROM table1_stage ) s
+    ON table1.order_id = s.order_id
+WHEN MATCHED THEN
+    UPDATE table1.order_amount = s.order_amount
+WHEN NOT MATCHED THEN
+    INSERT *
+```
+
+::: {style="font-size: 60%;"}
+Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared).
+:::
+
+
+## Iceberg in practice
+### Result of merging into/upserting data
+
+<br>
+
+![](images/iceberg-merge-into.png)
+
+::: {style="font-size: 60%;"}
+Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared).
+:::
+
+## Iceberg in practice
+### Merge into/upserting data
+
+<br>
+
+```sql
+SELECT *
+FROM db1.table1
+```
+
+::: {style="font-size: 60%;"}
+Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared).
+:::
+
+
+## Iceberg in practice
+### Result of select statement
+
+<br>
+
+![](images/iceberg-select.png)
+
+::: {style="font-size: 60%;"}
+Source: [Apache Iceberg: An Architectural Look Under the Covers](https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared).
+:::
+
+# Understand the composable data stack
 
 ## The Composable Data Stack
 ### Layers

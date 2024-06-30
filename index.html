@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.553">
 
   <meta name="author" content="Dr Daniel Kapitan">
-  <meta name="dcterms.date" content="2024-06-28">
+  <meta name="dcterms.date" content="2024-06-30">
   <title>Modern, open and downward-scaleable data engineering</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -411,7 +411,7 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
     </div>
 </div>
 
-  <p class="date">June 28, 2024</p>
+  <p class="date">June 30, 2024</p>
 </section>
 <section id="attribution-copyright-notice" class="slide level2">
 <h2>Attribution &amp; copyright notice</h2>
@@ -432,7 +432,7 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 <p><br></p>
 <div class="columns" style="font-size: 80%;">
 <div class="column" style="width:50%;">
-<h3 id="understand">Understand</h3>
+<h3 id="understand-the-problem">Understand the problem</h3>
 <ul>
 <li>how data platforms evolved in the past couple of decades</li>
 <li>current problems with data platforms</li>
@@ -457,8 +457,8 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 </section>
 </section>
 <section>
-<section id="understand-1" class="title-slide slide level1 center">
-<h1>Understand</h1>
+<section id="understand-the-problem-1" class="title-slide slide level1 center">
+<h1>Understand the problem</h1>
 
 </section>
 <section id="the-problem" class="slide level2">
@@ -505,6 +505,58 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 <p>Armbrust, Michael, et al.&nbsp;<a href="https://15721.courses.cs.cmu.edu/spring2023/papers/02-modern/armbrust-cidr21.pdf">Lakehouse: a new generation of open platforms that unify data warehousing and advanced analytics.</a> Proceedings of CIDR. Vol. 8. 2021.</p>
 </div>
 </section>
+<section id="towards-a-data-centric-future" class="slide level2">
+<h2>Towards a data-centric future</h2>
+<p><br></p>
+<div style="font-size: 80%;">
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>NOW: Application-Centric</th>
+<th>FUTURE: Data-Centric</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Exorbitant, often prohibitive, cost of change. Reasonable cost of change.</td>
+<td>Data is tied up in applications because applications own data. Data is an open resource that outlives any given application.</td>
+</tr>
+<tr class="even">
+<td>Every new project comes with a big data conversion project.</td>
+<td>Every new project taps into existing data stores.</td>
+</tr>
+<tr class="odd">
+<td>Data exists in wide variety of heterogeneous formats, structures, meaning, and terminology.</td>
+<td>Data is globally integrated sharing a common meaning, being exported from a common source into any needed format.</td>
+</tr>
+<tr class="even">
+<td>Data integration consumes 35%-65% of IT budget.</td>
+<td>Data integration will be nearly free.</td>
+</tr>
+<tr class="odd">
+<td>Hard or impossible to integrate external data with internal data.</td>
+<td>Internal and external data readily integrated.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="font-size: 60%;">
+<p>Source: <a href="http://datacentricmanifesto.org/principles/">The Data-Centric Manifesto: Principles</a>.</p>
+</div>
+</section>
+<section id="section" class="slide level2" data-background-color="black">
+<h2></h2>
+
+<img data-src="images/importance-of-interoperability.png" class="r-stretch"></section></section>
+<section>
+<section id="understand-open-standards" class="title-slide slide level1 center">
+<h1>Understand open standards</h1>
+
+</section>
 <section id="decomposing-the-venerable-relational-database-management-system-rdbms" class="slide level2">
 <h2>Decomposing the venerable relational database management system (RDBMS)</h2>
 
@@ -512,18 +564,18 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 <p>Source: Basil Borque on <a href="https://stackoverflow.com/questions/7022755/whats-the-difference-between-a-catalog-and-a-schema-in-a-relational-database">Stackoverflow</a></p>
 </div>
 </section>
-<section id="from-row-based-to-column-based-tables" class="slide level2">
-<h2>From row-based to column-based tables</h2>
+<section id="decomposing-the-database-into-open-standards" class="slide level2">
+<h2>Decomposing the database into open standards</h2>
+
+<img data-src="images/parquet-arrow-iceberg.png" class="r-stretch"></section>
+<section id="arrow-from-row-based-to-column-based-tables" class="slide level2">
+<h2>Arrow: from row-based to column-based tables</h2>
 <h3 id="columnar-is-faster-for-analytical-processing">Columnar is faster for analytical processing</h3>
 
 <img data-src="images/row-vs-columnar-data.png" class="r-stretch"><div style="font-size: 60%;">
 <p>Source: <a href="https://arrow.apache.org/overview/">Apache Arrow overview</a>.</p>
 </div>
 </section>
-<section id="section" class="slide level2" data-background-color="black">
-<h2></h2>
-
-<img data-src="images/importance-of-interoperability.png" class="r-stretch"></section>
 <section id="standardization-saves-time-and-resources" class="slide level2">
 <h2>Standardization saves time and resources</h2>
 <h3 id="no-costly-serializationdeserialization-no-custom-implementations">No costly serialization/deserialization, no custom implementations</h3>
@@ -539,10 +591,143 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 <p>Source: <a href="https://arrow.apache.org/overview/">Apache Arrow overview</a>.</p>
 </div>
 </section>
-<section id="decomposing-the-database-into-open-standards" class="slide level2">
-<h2>Decomposing the database into open standards</h2>
+<section id="iceberg-an-open-table-format-and-catalog" class="slide level2">
+<h2>Iceberg: an open table format and catalog</h2>
+<h3 id="basically-a-database-engine-in-files">Basically, a database engine in files</h3>
+<p><br></p>
 
-<img data-src="images/parquet-arrow-iceberg.png" class="r-stretch"></section>
+<img data-src="images/iceberg-metadata.png" class="r-stretch"><div style="font-size: 60%;">
+<p>Source: <a href="https://iceberg.apache.org/spec/">Apache Iceberg specification</a>.</p>
+</div>
+</section>
+<section id="iceberg-catalog" class="slide level2">
+<h2>Iceberg catalog</h2>
+<h3 id="we-still-need-a-small-database">We still need a (small) database</h3>
+
+<img data-src="images/iceberg-catalog.webp" class="r-stretch"><div style="font-size: 60%;">
+<p>Source: <a href="https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared">Apache Iceberg: An Architectural Look Under the Covers</a>.</p>
+</div>
+</section>
+<section id="iceberg-metadata-file" class="slide level2">
+<h2>Iceberg metadata file</h2>
+<h3 id="stores-schema-partition-information-and-snapshots">Stores schema, partition information and snapshots</h3>
+
+<img data-src="images/iceberg-metadata-file.webp" class="r-stretch"><div style="font-size: 60%;">
+<p>Source: <a href="https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared">Apache Iceberg: An Architectural Look Under the Covers</a>.</p>
+</div>
+</section>
+<section id="iceberg-manifest-list" class="slide level2">
+<h2>Iceberg manifest list</h2>
+<h3 id="stores-information-about-each-manifest-file-that-makes-up-a-snapshot">Stores information about each manifest file that makes up a snapshot</h3>
+
+<img data-src="images/iceberg-manifest-list.webp" class="r-stretch"><div style="font-size: 60%;">
+<p>Source: <a href="https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared">Apache Iceberg: An Architectural Look Under the Covers</a>.</p>
+</div>
+</section>
+<section id="iceberg-manifest-file" class="slide level2">
+<h2>Iceberg manifest file</h2>
+<h3 id="track-data-files-as-well-as-additional-details-and-statistics-about-each-file">Track data files as well as additional details and statistics about each file</h3>
+
+<img data-src="images/iceberg-manifest-file.webp" class="r-stretch"><div style="font-size: 60%;">
+<p>Source: <a href="https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared">Apache Iceberg: An Architectural Look Under the Covers</a>.</p>
+</div>
+</section>
+<section id="iceberg-in-practice" class="slide level2">
+<h2>Iceberg in practice</h2>
+<h3 id="creating-a-table">Creating a table</h3>
+<p><br></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href=""></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> table1 (</span>
+<span id="cb1-2"><a href=""></a>    order_id BIGINT,</span>
+<span id="cb1-3"><a href=""></a>    customer_id BIGINT,</span>
+<span id="cb1-4"><a href=""></a>    order_amount <span class="dt">DECIMAL</span>(<span class="dv">10</span>, <span class="dv">2</span>),</span>
+<span id="cb1-5"><a href=""></a>    order_ts <span class="dt">TIMESTAMP</span></span>
+<span id="cb1-6"><a href=""></a>)</span>
+<span id="cb1-7"><a href=""></a><span class="kw">USING</span> iceberg</span>
+<span id="cb1-8"><a href=""></a>PARTITIONED <span class="kw">BY</span> ( <span class="kw">HOUR</span>(order_ts) );</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="font-size: 60%;">
+<p>Source: <a href="https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared">Apache Iceberg: An Architectural Look Under the Covers</a>.</p>
+</div>
+</section>
+<section id="iceberg-in-practice-1" class="slide level2">
+<h2>Iceberg in practice</h2>
+<h3 id="result-of-creating-a-table">Result of creating a table</h3>
+<p><br></p>
+
+<img data-src="images/iceberg-create-table.png" class="r-stretch"><div style="font-size: 60%;">
+<p>Source: <a href="https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared">Apache Iceberg: An Architectural Look Under the Covers</a>.</p>
+</div>
+</section>
+<section id="iceberg-in-practice-2" class="slide level2">
+<h2>Iceberg in practice</h2>
+<h3 id="inserting-data">Inserting data</h3>
+<p><br></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href=""></a><span class="kw">INSERT</span> <span class="kw">INTO</span> table1 <span class="kw">VALUES</span> (</span>
+<span id="cb2-2"><a href=""></a>    <span class="dv">123</span>,</span>
+<span id="cb2-3"><a href=""></a>    <span class="dv">456</span>,</span>
+<span id="cb2-4"><a href=""></a>    <span class="fl">36.17</span>,</span>
+<span id="cb2-5"><a href=""></a>    <span class="st">'2021-01-26 08:10:23'</span></span>
+<span id="cb2-6"><a href=""></a>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="font-size: 60%;">
+<p>Source: <a href="https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared">Apache Iceberg: An Architectural Look Under the Covers</a>.</p>
+</div>
+</section>
+<section id="iceberg-in-practice-3" class="slide level2">
+<h2>Iceberg in practice</h2>
+<h3 id="result-of-inserting-data">Result of inserting data</h3>
+<p><br></p>
+
+<img data-src="images/iceberg-insert.webp" class="r-stretch"><div style="font-size: 60%;">
+<p>Source: <a href="https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared">Apache Iceberg: An Architectural Look Under the Covers</a>.</p>
+</div>
+</section>
+<section id="iceberg-in-practice-4" class="slide level2">
+<h2>Iceberg in practice</h2>
+<h3 id="merge-intoupserting-data">Merge into/upserting data</h3>
+<p><br></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href=""></a><span class="kw">MERGE</span> <span class="kw">INTO</span> table1</span>
+<span id="cb3-2"><a href=""></a><span class="kw">USING</span> ( <span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table1_stage ) s</span>
+<span id="cb3-3"><a href=""></a>    <span class="kw">ON</span> table1.order_id <span class="op">=</span> s.order_id</span>
+<span id="cb3-4"><a href=""></a><span class="cf">WHEN</span> MATCHED <span class="cf">THEN</span></span>
+<span id="cb3-5"><a href=""></a>    <span class="kw">UPDATE</span> table1.order_amount <span class="op">=</span> s.order_amount</span>
+<span id="cb3-6"><a href=""></a><span class="cf">WHEN</span> <span class="kw">NOT</span> MATCHED <span class="cf">THEN</span></span>
+<span id="cb3-7"><a href=""></a>    <span class="kw">INSERT</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="font-size: 60%;">
+<p>Source: <a href="https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared">Apache Iceberg: An Architectural Look Under the Covers</a>.</p>
+</div>
+</section>
+<section id="iceberg-in-practice-5" class="slide level2">
+<h2>Iceberg in practice</h2>
+<h3 id="result-of-merging-intoupserting-data">Result of merging into/upserting data</h3>
+<p><br></p>
+
+<img data-src="images/iceberg-merge-into.png" class="r-stretch"><div style="font-size: 60%;">
+<p>Source: <a href="https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared">Apache Iceberg: An Architectural Look Under the Covers</a>.</p>
+</div>
+</section>
+<section id="iceberg-in-practice-6" class="slide level2">
+<h2>Iceberg in practice</h2>
+<h3 id="merge-intoupserting-data-1">Merge into/upserting data</h3>
+<p><br></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href=""></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb4-2"><a href=""></a><span class="kw">FROM</span> db1.table1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="font-size: 60%;">
+<p>Source: <a href="https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared">Apache Iceberg: An Architectural Look Under the Covers</a>.</p>
+</div>
+</section>
+<section id="iceberg-in-practice-7" class="slide level2">
+<h2>Iceberg in practice</h2>
+<h3 id="result-of-select-statement">Result of select statement</h3>
+<p><br></p>
+
+<img data-src="images/iceberg-select.png" class="r-stretch"><div style="font-size: 60%;">
+<p>Source: <a href="https://www.dremio.com/resources/guides/apache-iceberg-an-architectural-look-under-the-covers/?utm_source=pocket_shared">Apache Iceberg: An Architectural Look Under the Covers</a>.</p>
+</div>
+</section></section>
+<section>
+<section id="understand-the-composable-data-stack" class="title-slide slide level1 center">
+<h1>Understand the composable data stack</h1>
+
+</section>
 <section id="the-composable-data-stack" class="slide level2">
 <h2>The Composable Data Stack</h2>
 <h3 id="layers">Layers</h3>
@@ -715,21 +900,21 @@ Dr Daniel Kapitan <a href="https://orcid.org/0000-0001-8979-9194" class="quarto-
 <section id="method-chaining" class="slide level2">
 <h2>Method chaining</h2>
 <h3 id="using-functions-the-bad-way">Using functions the bad way</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a>tumble_after(</span>
-<span id="cb1-2"><a href=""></a>    broke(</span>
-<span id="cb1-3"><a href=""></a>        fell_down(</span>
-<span id="cb1-4"><a href=""></a>            fetch(went_up(jack_jill, <span class="st">"hill"</span>), <span class="st">"water"</span>),</span>
-<span id="cb1-5"><a href=""></a>            jack),</span>
-<span id="cb1-6"><a href=""></a>        <span class="st">"crown"</span>),</span>
-<span id="cb1-7"><a href=""></a>    <span class="st">"jill"</span></span>
-<span id="cb1-8"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>tumble_after(</span>
+<span id="cb5-2"><a href=""></a>    broke(</span>
+<span id="cb5-3"><a href=""></a>        fell_down(</span>
+<span id="cb5-4"><a href=""></a>            fetch(went_up(jack_jill, <span class="st">"hill"</span>), <span class="st">"water"</span>),</span>
+<span id="cb5-5"><a href=""></a>            jack),</span>
+<span id="cb5-6"><a href=""></a>        <span class="st">"crown"</span>),</span>
+<span id="cb5-7"><a href=""></a>    <span class="st">"jill"</span></span>
+<span id="cb5-8"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h3 id="vs.-the-more-readable-way">… vs.&nbsp;the more readable way</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a>(jack_jill</span>
-<span id="cb2-2"><a href=""></a>  .went_up(<span class="st">"hill"</span>)</span>
-<span id="cb2-3"><a href=""></a>  .fetch(<span class="st">"water"</span>)</span>
-<span id="cb2-4"><a href=""></a>  .fell_down(<span class="st">"jack"</span>)</span>
-<span id="cb2-5"><a href=""></a>  .broke(<span class="st">"crown"</span>)</span>
-<span id="cb2-6"><a href=""></a>  .tumble_after(<span class="st">"jill"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a>(jack_jill</span>
+<span id="cb6-2"><a href=""></a>  .went_up(<span class="st">"hill"</span>)</span>
+<span id="cb6-3"><a href=""></a>  .fetch(<span class="st">"water"</span>)</span>
+<span id="cb6-4"><a href=""></a>  .fell_down(<span class="st">"jack"</span>)</span>
+<span id="cb6-5"><a href=""></a>  .broke(<span class="st">"crown"</span>)</span>
+<span id="cb6-6"><a href=""></a>  .tumble_after(<span class="st">"jill"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div style="font-size: 60%;">
 <p>Source: Tom’s (Augspurger) Blog. <a href="https://tomaugspurger.net/posts/method-chaining/">Method Chaining</a>.</p>
 </div>
