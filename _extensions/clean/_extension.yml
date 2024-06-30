@@ -15,7 +15,6 @@ contributes:
       transition: fade
       transition-speed: slow
       background-transition: fade
-      navigation-mode: grid
       chalkboard: true
       footer: <https://anthology-of-data.science>
 

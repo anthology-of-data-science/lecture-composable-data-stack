@@ -79,7 +79,11 @@ Source code: [https://github.com/anthology-of-data-science/lecture-composable-da
 
 ## The Composable Data Management System Manifesto
 
+<br>
+
+::: {style="font-size: 80%"}
 > _The requirement for specialization in data management systems has evolved faster than our software development practices. After decades of organic growth, this situation has created a **siloed landscape** composed of hundreds of products developed and maintained as monoliths, with limited reuse between systems. This fragmentation has resulted in developers often reinventing the wheel, **increased maintenance costs, and slowed down innovation**. It has also affected the end users, who are often required to learn the **idiosyncrasies of dozens of incompatible SQL and non-SQL API dialects**, and settle for systems with incomplete functionality and inconsistent semantics._
+:::
 
 ::: {style="font-size: 60%;"}
 Pedreira, Pedro, et al. [The composable data management system manifesto.](https://dl.acm.org/doi/10.14778/3603581.3603604) Proceedings of the VLDB Endowment 16.10 (2023): 2679-2685.
@@ -133,7 +137,7 @@ Source: [The Data-Centric Manifesto: Principles](http://datacentricmanifesto.org
 ## {background-color="black"}
 ![](images/importance-of-interoperability.png)
 
-# Understand open standards
+# Understand open standards for data platforms
 
 ## Decomposing the venerable relational database management system (RDBMS)
 
