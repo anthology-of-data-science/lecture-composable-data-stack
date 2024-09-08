@@ -1,39 +1,7 @@
-# Quarto clean theme
+# Modern, open and downward-scaleable data engineering
 
-A minimalist and elegant presentation theme for Quarto Reveal.js, inspired by Kyle's
-[LaTex template](https://raw.githack.com/kylebutts/templates/master/latex-slides/slides.pdf).
+Source code for a 3-hour lecture to get started with the composable data stack.
 
-Click the screenshot below to be taken to a
-[live demo](https://grantmcdermott.com/quarto-revealjs-clean-demo/template.html).
+[![](images/mice-complete-implementation.png "online")](https://anthology-of-data.science/lecture-composable-data-stack/#/title-slide)
 
-[![](clean-title.png "live demo")](https://grantmcdermott.com/quarto-revealjs-clean-demo/template.html)
-
-## Use
-
-Depending on your use case, here are some [Quarto CLI](https://quarto.org/)
-commands to get started.
-
-If you would like to add the **clean** theme to an existing directory:
-
-```bash
-quarto install extension grantmcdermott/quarto-revealjs-clean
-```
-
-Alternatively, you can use a
-[Quarto template](https://quarto.org/docs/extensions/starter-templates.html)
-that bundles the **clean** theme plus a .qmd starter document. This is a better
-option if you are starting a new project from scratch, since it will automatically
-create a new directory with all of the necessary scaffolding in one go. We provide
-two template options.
-
-- Bare bones template
-
-```bash
-quarto use template grantmcdermott/quarto-revealjs-clean
-```
-
-- Full demo template
-
-```bash
-quarto use template grantmcdermott/quarto-revealjs-clean-demo
-```
+<p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p>
